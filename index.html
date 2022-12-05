@@ -47,28 +47,20 @@
     // Set up the user properties. This user should appear on your LaunchDarkly users dashboard
     // soon after you run the demo.
     var user = {
-      // name: 'Bob Loblaw',
       key: (Math.random() + 1).toString(36).substring(9),
     };
-
-    // var div = document.createElement('div');
-    // document.body.appendChild(div);
-
-    // div.appendChild(document.createTextNode('Initializing...'));
 
     // Create a new LDClient instance with your environment-specific SDK key
     var ldclient = LDClient.initialize('638d838c67120410b874a0ef', user);
 
     function render() {
       var flagValue = ldclient.variation('blue-background', false);
-      // var label = (flagValue ? 'Showing' : 'Not showing') + ' your feature to ' + user.key;
 
       if (flagValue) {
         document.body.classList.add('blue');
       }
 
       console.log("SDK successfully connected! The value of blue-background is " + flagValue + " for " + user.key)
-      // div.replaceChild(document.createTextNode(label), div.firstChild);
     }
 
     ldclient.on('ready', render);
